@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Create Account">
+        <lightning-input
+                label="Name"
+                onchange={handleNameChange}
+                class="slds-var-m-bottom_x-small">
+        </lightning-input>
+
+        <lightning-button label="New Account" onclick={handleNewAccount}></lightning-button>
+        <template if:true={showChildButton}>
+            <lightning-button label="New Contact" onclick={handleNewContact}></lightning-button>
+        </template>
+    </lightning-card>
+    <template if:true={showContactForm}>
+        <lightning-card title="New Contact">
+            <div class="slds-m-around_medium">
+                <lightning-input label="First Name" value={contactFields.FirstName} onchange={handleFieldChange}></lightning-input>
+                <lightning-input label="Last Name" value={contactFields.LastName} onchange={handleFieldChange}></lightning-input>
+                <lightning-input label="Email" type="email" value={contactFields.Email} onchange={handleFieldChange}></lightning-input>
+            </div>
+            <div class="slds-m-around_medium">
+                <lightning-button label="Save" onclick={handleSaveContact}></lightning-button>
+            </div>
+        </lightning-card>
+    </template>
+</template>
